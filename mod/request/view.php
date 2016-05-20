@@ -84,16 +84,23 @@ if (!$connection) {
     echo "Error:   MySQL." . PHP_EOL;
     exit;
 }
-
-
-$insert=mysqli_query($connection,"INSERT INTO mdl_adminsynchronization
+$insert=$connection->query("INSERT INTO adminsynchronization
     VALUES (null,
     '".$_REQUEST['academic']."',
     '".$_REQUEST['unit']."',
     '".$_REQUEST['category']."',
     '".$_REQUEST['active']."',
     '".$_REQUEST['comments']."')
-    ");
+    ") ;
+
+// $insert=mysql_query($connection,"INSERT INTO mdl_adminsynchronization
+//     VALUES (null,
+//     '".$_REQUEST['academic']."',
+//     '".$_REQUEST['unit']."',
+//     '".$_REQUEST['category']."',
+//     '".$_REQUEST['active']."',
+//     '".$_REQUEST['comments']."')
+//     ");
 
 if( $insert == FALSE)
 {
@@ -105,9 +112,11 @@ else
 {   
      echo"<h2><p>Error de conexión</p></h2>";
     echo"<a class='btn btn-warning' href='http://localhost/moodle/course/view.php?id=4' role='button'>Volver</a>";
+  
 
 
 }
+
 mysqli_close($enlace);
 // Finish the page.
 echo $OUTPUT->footer();
