@@ -80,30 +80,102 @@ if ($adminsynchronization->intro) {
 echo $OUTPUT->heading('<h1>Administrador</h1><br>');
 // Request the id from the last page
 $variable=$_GET['variable'];
+// Connection to mysql
+$connection = mysqli_connect("localhost", "root", "", "software");
 // If 1 is a omega request
 if($variable==1)
-{
+{  
+
+  $query=$connection->query("SELECT * FROM `adminsynchronization` where `Unit` = 'Omega'  and `Status`='StandBy'");
+
+   $result = mysqli_fetch_array($query,MYSQLI_NUM);
+  if($result!=0)
+  {
+
+
+    while ($row = $query->fetch_assoc())
+    {
+      echo 
+      "<table  '>
+      <tr>
+      <td> <h3>Se solicito sincronizació con Omega,". $row['Comment']."</h3><td/>
+      </tr>
+      <tr>
+      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1' role='button'>Aceptar</a>
+       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2' role='button'>Rechazar</a></td>
+      </tr>
+      </table>";
+    }
+   
+  }
+  else
+  {
   echo"<center><h2><p> Solicitudes de Omega<p></h2></center>";
-  echo "<center><h2><p>Ninguna por ahora<h2></ceneter>";
+  echo "<center><h2><p>Ninguna por ahora<h2></center>";
+  echo "<a class='btn btn-warning btn-lg active' href='http://localhost/moodle/course/view.php?id=5' role='button'>Volver</a>
+  </p></center>";
+  }
 }
 // If 2 is a WebCursos request
 else if($variable==2)
 {
+  $query=$connection->query("SELECT * FROM `adminsynchronization` where `Unit` = 'Webcursos'  and `Status`='StandBy'");
+  $result = mysqli_fetch_assoc($query);
+  
+  if($result!=0)
+  {
+    while ($row = $query->fetch_assoc())
+    {
+      echo 
+      "<table  '>
+      <tr>
+      <td> <h3>Se solicito sincronizació con Webcursos,". $row['Comment']."</h3><td/>
+      </tr>
+      <tr>
+      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1'  role='button'>Aceptar</a>
+       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2'  role='button'>Rechazar</a></td>
+      </tr>
+      </table>";
+    }
+  }
+  else
+  {
   echo"<center><h2><p> Solicitudes de WebCursos<p></h2></center>";
   echo "<center><h2><p>Ninguna por ahora<h2></center>";
+  echo "<a class='btn btn-warning btn-lg active' href='http://localhost/moodle/course/view.php?id=5' role='button'>Volver</a>
+  </p></center>";
+  }
 }
-// If 2 is Pregrado WebCursos request
+// If 3 is Pregrado  request
 else if($variable==3)
 {
+  $query=$connection->query("SELECT * FROM `adminsynchronization` where `Unit` = 'Pregrado'  and `Status`='StandBy'");
+  $result = mysqli_fetch_assoc($query);
+  
+  if($result!=0)
+  {
+    while ($row = $query->fetch_assoc())
+    {
+      echo 
+      "<table >
+      <tr>
+      <td> <h3>Se solicito sincronizació con Pregrado,". $row['Comment']."</h3><td/>
+      </tr>
+      <tr>
+      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1' role='button'>Aceptar</a>
+       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2'  role='button'>Rechazar</a></td>
+      </tr>
+      </table>";
+    }
+  }
+  else
+  {
   echo"<center><h2><p> Asistencia de Pregrado<p></h2></center>";
   echo "<center><h2><p>Ninguna por ahora<h2></center>";
-}
-// The Buttons from de Request View
-// Aceptar to say Accept the Request
-// Rechazar to return to the AdminSynchronization Page
-echo "<center><p>
-  <a class='btn btn-primary btn-lg active' href='#' role='button'>Aceptar</a>
-  <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/course/view.php?id=5' role='button'>Rechazar</a>
+  echo "<a class='btn btn-warning btn-lg active' href='http://localhost/moodle/course/view.php?id=5' role='button'>Volver</a>
   </p></center>";
+  }
+}
+
 // Finish the page.
 echo $OUTPUT->footer();
