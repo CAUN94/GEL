@@ -89,9 +89,9 @@ if (!$connection) {
     
     if($update!=0)
     {
-     echo "<script type='text/javascript'>window.location.href='http://localhost/moodle/course/view.php?id=5'</script>";
+    echo "<script type='text/javascript'>window.location.href='http://localhost/moodle/mod/adminsynchronization/view.php?id=19&variable=".$_GET['redirect']."' </script>";
 
-    window.location.replace("http://localhost/moodle/course/view.php?id=2");
+    // window.location.replace("http://localhost/moodle/course/view.php?id=2");
     }
     }
 
@@ -102,9 +102,9 @@ if (!$connection) {
    
     if($update!=0)
     {
-     echo "<script type='text/javascript'>window.location.href='http://localhost/moodle/course/view.php?id=5'</script>";
+    echo "<script type='text/javascript'>window.location.href='http://localhost/moodle/mod/adminsynchronization/view.php?id=19&variable=".$_GET['redirect']."'</script>";
 
-    window.location.replace("http://localhost/moodle/course/view.php?id=2");
+    // window.location.replace("http://localhost/moodle/course/view.php?id=2");
     }
     }
 

@@ -87,9 +87,9 @@ if($variable==1)
 {  
 
   $query=$connection->query("SELECT * FROM `adminsynchronization` where `Unit` = 'Omega'  and `Status`='StandBy'");
+  $result = mysqli_num_rows($query);
 
-   $result = mysqli_fetch_array($query,MYSQLI_NUM);
-  if($result!=0)
+  if($result>0)
   {
 
 
@@ -101,8 +101,8 @@ if($variable==1)
       <td> <h3>Se solicito sincronizació con Omega,". $row['Comment']."</h3><td/>
       </tr>
       <tr>
-      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1' role='button'>Aceptar</a>
-       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2' role='button'>Rechazar</a></td>
+      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1&redirect=".$variable."' role='button'>Aceptar</a>
+       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2&redirect=".$variable."' role='button'>Rechazar</a></td>
       </tr>
       </table>";
     }
@@ -120,9 +120,9 @@ if($variable==1)
 else if($variable==2)
 {
   $query=$connection->query("SELECT * FROM `adminsynchronization` where `Unit` = 'Webcursos'  and `Status`='StandBy'");
-  $result = mysqli_fetch_assoc($query);
-  
-  if($result!=0)
+  $result = mysqli_num_rows($query);
+
+  if($result>0)
   {
     while ($row = $query->fetch_assoc())
     {
@@ -132,8 +132,8 @@ else if($variable==2)
       <td> <h3>Se solicito sincronizació con Webcursos,". $row['Comment']."</h3><td/>
       </tr>
       <tr>
-      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1'  role='button'>Aceptar</a>
-       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2'  role='button'>Rechazar</a></td>
+      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1&redirect=".$variable."' role='button'>Aceptar</a>
+       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2&redirect=".$variable."' role='button'>Rechazar</a></td>
       </tr>
       </table>";
     }
@@ -150,10 +150,10 @@ else if($variable==2)
 else if($variable==3)
 {
   $query=$connection->query("SELECT * FROM `adminsynchronization` where `Unit` = 'Pregrado'  and `Status`='StandBy'");
-  $result = mysqli_fetch_assoc($query);
-  
-  if($result!=0)
-  {
+  $result = mysqli_num_rows($query);
+
+  if($result>0)
+    {
     while ($row = $query->fetch_assoc())
     {
       echo 
@@ -162,8 +162,8 @@ else if($variable==3)
       <td> <h3>Se solicito sincronizació con Pregrado,". $row['Comment']."</h3><td/>
       </tr>
       <tr>
-      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1' role='button'>Aceptar</a>
-       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2'  role='button'>Rechazar</a></td>
+      <td> <a class='btn btn-primary btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=1&redirect=".$variable."' role='button'>Aceptar</a>
+       <a class='btn btn-danger btn-lg active' href='http://localhost/moodle/mod/update/view.php?id=21&variable=".$row['id']."&Status=2&redirect=".$variable."' role='button'>Rechazar</a></td>
       </tr>
       </table>";
     }

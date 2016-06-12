@@ -99,7 +99,7 @@ while ($row = $query->fetch_assoc())
     {
      if($row['Status']=="True")
         {
-           ?><tr class="success" align='center'><?php
+           ?><tr  align='center'><?php
         }
         else if($row['Status']=="False")
         {
@@ -136,7 +136,7 @@ echo "</table>";
 else if ($_GET['user'] == "2")
 {
     echo "<h3>Profesor: Estado de sus Sincronizaciones</h3>";
-    $query=$connection->query("SELECT * FROM `adminsynchronization` where `Status` not like 'True' order By `Status` desc");
+    $query=$connection->query("SELECT * FROM `adminsynchronization`  order By `Status` desc");
    echo
       "
       <table class='table'> 

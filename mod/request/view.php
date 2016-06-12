@@ -77,7 +77,7 @@ if ($request->intro) {
 }
 
 // Replace the following lines with you own code.
-echo $OUTPUT->heading('REQUEST');
+echo $OUTPUT->heading();
 $connection = mysqli_connect("localhost", "root", "", "software");
 
 if (!$connection) {
@@ -90,7 +90,7 @@ if($_REQUEST['academic'] == null ||
       $_REQUEST['active'] == null || 
       $_REQUEST['comments'] == null)
 {
-    echo"<h2><p>Error de conexión</p></h2>";
+    echo"<h2><p>Formulario incompleto</p></h2>";
     echo"<a class='btn btn-warning' href='http://localhost/moodle/course/view.php?id=4' role='button'>Volver</a>";
 }
 else
@@ -106,13 +106,17 @@ else
     null,
     null)
     ") ;
-
-    echo"<a class='btn btn-warning' href='http://localhost/moodle/course/view.php?id=4' role='button'>Volver</a>";
+   
+    
     if($insert==1)
     {
      echo "<script type='text/javascript'>window.location.href='http://localhost/moodle/course/view.php?id=2'</script>";
 
     window.location.replace("http://localhost/moodle/course/view.php?id=2");
+    }
+    else
+    {
+        echo"<a class='btn btn-warning' href='http://localhost/moodle/course/view.php?id=4' role='button'>Volver</a>";
     }
 }
 
